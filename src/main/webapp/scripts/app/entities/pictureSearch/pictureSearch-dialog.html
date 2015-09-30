@@ -1,0 +1,48 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPictureSearchLabel" translate="global.menu.searchByPicture">Search</h4>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group" ngf-drop ngf-change="setPictureSearchFile($files, pictureSearch)" ngf-accept="'image/*'">
+            <label translate="flipperApp.pictureSearch.pictureFileSearch" for="field_pictureFile">PictureFile</label>
+            <div>
+                <img data-ng-src="{{'data:image/*;base64,' + pictureSearch.pictureFile}}" style="max-height: 100px;" ng-if="pictureSearch.pictureFile"/>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{byteSize(pictureSearch.pictureFile)}}</span>
+                    <button ng-click="pictureSearch.pictureFile=null"
+                            ng-if="pictureSearch.pictureFile"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPictureSearchFile($files, pictureSearch)" accept="image/*" translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="pictureFile" id="field_pictureFile"
+                   ng-model="pictureSearch.pictureFile" required>
+
+            <div ng-show="editForm.pictureFile.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.pictureFile.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="global.menu.search">Search</span>
+        </button>
+    </div>
+</form>

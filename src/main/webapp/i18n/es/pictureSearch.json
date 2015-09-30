@@ -1,0 +1,33 @@
+{
+    "flipperApp": {
+        "pictureSearch" : {
+            "home": {
+                "title": "Imágenes de búsqueda",
+                "search": "Buscar por imagen",
+                "createLabel": "Subir imagen para búsqueda",
+                "createOrEditLabel": "Editar imagen de búsqueda"
+            },
+            "id": "Id",
+            "created": "Imagen de búsqueda añadida con id {{ param }}",
+            "updated": "Imagen de búsqueda actualizada con id {{ param }}",
+            "deleted": "Imagen de búsqueda eliminada con id {{ param }}",
+            "delete": {
+                "question": "¿Seguro que deseas eliminar la imagen de búsqueda con id {{ id }}?"
+            },
+            "detail": {
+                "title": "Imagen de búsqueda"
+            },
+            "pictureFileSearch": "Arrastra y suelta una imagen para buscar",
+            "pictureFile": "imagen",
+            "created": "fecha",
+            "userLogin": "usuario",
+            "SELECT": "{VALUE, select, ColorLayout{ColorLayout} EdgeHistogram{EdgeHistogram} PHOG{PHOG} AutoColorCorrelogram{AutoColorCorrelogram} CEDDDocument{CEDDDocument} ColorHistogram{ColorHistogram} other{}}",
+            "ColorLayout": "ColorLayout",
+            "EdgeHistogram": "EdgeHistogram",
+            "PHOG": "PHOG",
+            "AutoColorCorrelogram": "AutoColorCorrelogram",
+            "CEDDDocument": "CEDDDocument",
+            "ColorHistogram": "ColorHistogram"
+        }
+    }
+}

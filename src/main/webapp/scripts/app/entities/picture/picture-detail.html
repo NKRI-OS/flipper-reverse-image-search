@@ -1,0 +1,23 @@
+
+<div>
+    <h2>{{picture.title}}</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img data-ng-src="{{'data:image/*;base64,' + picture.mediumPictureFile}}"
+                     alt="{{picture.title}}" class="img-thumbnail" ng-if="picture.mediumPictureFile"/>
+            </div>
+            <div class="col-md-12">
+                <h3>{{picture.title}}</h3>
+                <p>{{picture.description}}</p>
+                <p>{{picture.owner}} - {{picture.created}}</p>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit"
+            ui-sref="picture"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

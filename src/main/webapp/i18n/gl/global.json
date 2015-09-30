@@ -1,0 +1,123 @@
+{
+    "global": {
+        "title": "Flipper",
+        "browsehappy": "Está a utilizar un navegador <strong>non actualizado</strong>. Por favor <a href=\"http://browsehappy.com/?locale=en\">actualiza o teu navegador</a> para mellorar a túa experiencia.",
+        "menu": {
+            "home": "Inicio",
+	        "searchByPicture": "Buscar imaxes",
+	        "pictures": "Imaxes",
+	        "mypictures": "Miñas Imaxes",
+	        "upload": "Subir",
+	        "search": "Buscar",
+	        "API": "API",
+                "entities": {
+                    "main": "Entities",
+                    "picture": "Imaxes",
+                    "metadata": "Metadata",
+                    "feature": "Características",
+                    "pictureSearch": "Pesquisas",
+                    "pictureFound": "Imaxes atopadas",
+                    "additionalEntity": "JHipster will add additional entities here (do not translate!)"
+                },
+            "account": {
+                "main": "Conta",
+                "settings": "Axustes",
+                "password": "Contrasinal",
+                "sessions": "Sesións",
+                "login": "Iniciar sesión",
+                "logout": "Saír",
+                "register": "Crear unha conta"
+            },
+            "admin": {
+                "main": "Administración",
+                "user-management": "Xestión de usuarios",
+                "tracker": "Rexistro de usuarios",
+                "metrics": "Métricas",
+                "health": "Saúde",
+                "configuration": "Configuración",
+                "logs": "Logs",
+                "audits": "Auditorías",
+                "apidocs": "API",
+                "database": "Base de datos"
+            },
+            "language": "Idioma"
+            },
+            "form": {
+                "username": "Usuario",
+                "username.placeholder": "Seu usuario",
+                "newpassword": "Novo contrasinal",
+                "newpassword.placeholder": "Novo contrasinal",
+                "confirmpassword": "Confirmación do novo contrasinal",
+                "confirmpassword.placeholder": "Confirmación do novo contrasinal",
+                "email": "Correo electrónico",
+                "email.placeholder": "O seu correo electrónico"
+            },
+            "messages": {
+                "info": {
+                    "authenticated": "Se desexa <a class=\"alert-link\" href=\"#/login\">iniciar unha sesión</a>, pode intentalo coas contas predeterminadas:<br/>- Administrator (usuario=\"admin\" e contrasinal=\"admin\") <br/>- Usuario (usuario=\"user\" e contrasinal=\"user\").",
+                    "register": "Aínda non tes unha conta de usuario? <a class=\"alert-link\" href=\"#/register\">Crea unha conta</a>"
+                },
+                "error": {
+                    "dontmatch" : "O contrasinal e a confirmación non coinciden!"
+                },
+                "validate": {
+                    "newpassword": {
+                        "required": "Requírese que ingrese un contrasinal.",
+                        "minlength": "Requírese que o seu contrasinal teña polo menos 5 caracteres",
+                        "maxlength": "O seu contrasinal non pode ter mais de 50 caracteres",
+                        "strength": "Seguridade do contrasinal:"
+                    },
+                    "confirmpassword": {
+                        "required": "Requírese que confirme o contrasinal.",
+                        "minlength": "Requírese que o seu contrasinal de confirmación teña polo menos 5 caracteres",
+                        "maxlength": "O seu contrasinal de confirmación non pode ter mais de 50 caracteres"
+                    },
+                    "email": {
+                        "required": "Requírese un correo electrónico.",
+                        "invalid": "O seu correo electrónico non é válido.",
+                        "minlength": "Requírese que o seu correo electrónico teña polo menos 5 caracteres",
+                        "maxlength": "O seu correo electrónico non pode ter máis de 50 caracteres"
+                    }
+                }
+            },
+            "field": {
+                "id" : "ID"
+            }
+        },
+        "entity": {
+            "action": {
+                "addblob": "Engadir blob",
+                "addimage": "Engadir imaxe",
+                "back": "Atrás",
+                "cancel": "Cancelar",
+                "delete": "Eliminar",
+                "edit": "Editar",
+                "save": "Gardar",
+                "view": "Vista"
+            },
+            "detail": {
+                "field": "Campo",
+                "value": "Valor"
+            },
+            "delete": {
+                "title": "Confirmar operación de eliminación"
+            },
+            "validation": {
+                "required": "Este campo é obrigatorio.",
+                "minlength": "Este campo é obrigatorio con polo menos {{min}} caracteres.",
+                "maxlength": "Este campo non pode ter máis de {{max}} caracteres.",
+                "min": "Este campo debe ser maior que {{min}}.",
+                "max": "Este campo non pode ser maior que {{max}}.",
+                "minbytes": "Este campo debe ser máis que {{min}} bytes.",
+                "maxbytes": "Este campo non poder ser máis que {{max}} bytes.",
+                "pattern": "Este campo debe seguir o patrón {{pattern}}.",
+                "number": "Este campo debe ser numérico.",
+                "datetimelocal": "Este campo debe ser una data e hora."
+            }
+        },
+        "error" : {
+            "serverNotReachable" : "Servidor non atopado",
+            "NotNull" : "Atributo {{fieldName}} non pode estar valeiro!"
+        },
+        "footer": "(C) David Albela Pérez. Mestrado Universitario en Enxeñaría Informática, Facultade de Informática - Universidade da Coruña"
+}

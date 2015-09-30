@@ -1,0 +1,108 @@
+
+<div>
+    <h2><span translate="flipperApp.pictureFound.detail.title">PictureSearch</span> {{pictureFound.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.title">Title</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.title}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.pictureFile">PictureFile</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:image/*;base64,' + pictureFound.mediumPictureFile}}" style="max-height: 100%;" ng-if="pictureFound.mediumPictureFile"/>
+                    {{byteSize(pictureFound.pictureFile)}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.created">Created</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.created}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.owner">Owner</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.owner}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.totalScore">totalScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.totalScore}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.autocolorCorrelogramScore">autocolorCorrelogramScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.autocolorCorrelogramScore}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.ceddScore">ceddScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.ceddScore}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.colorHistogramScore">colorHistogramScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.colorHistogramScore}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.colorLayoutScore">colorLayoutScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.colorLayoutScore}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.edgeHistogramScore">edgeHistogramScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.edgeHistogramScore}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureFound.phogScore">phogScore</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureFound.phogScore}}" readonly>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="submit"
+            ui-sref="adminPictureFound({pictureSearch_id:pictureFound.pictureSearch_id})"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

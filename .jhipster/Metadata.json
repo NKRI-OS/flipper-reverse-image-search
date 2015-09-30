@@ -1,0 +1,62 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "directoryName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "tagType",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "tagName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+		"pattern"
+            ],
+	    "fieldValidateRulesPattern": "^[^<>%$]*$"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "picture_id",
+            "fieldType": "UUID",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+            ]
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "pictureFile",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20150812080220",
+    "dto": "mapstruct"
+}

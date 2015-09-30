@@ -1,0 +1,33 @@
+{
+    "flipperApp": {
+        "pictureSearch" : {
+            "home": {
+                "title": "Procuras",
+                "search": "Procuras",
+                "createLabel": "Buscar",
+                "createOrEditLabel": "Editar unha Procura"
+            },
+            "id": "Id",
+            "created": "Creada unha nova procura con id {{ param }}",
+            "updated": "Actualizada unha nova procura con id {{ param }}",
+            "deleted": "Eliminada unha procura con id {{ param }}",
+            "delete": {
+                "question": "Estás seguro que desexas eliminar a procura {{ id }}?"
+            },
+            "detail": {
+                "title": "Procuras"
+            },
+            "pictureFileSearch": "Arrastra unha imaxe para buscar",
+            "pictureFile": "ficheiro",
+            "created": "Creado",
+            "userLogin": "usuario",
+            "SELECT": "{VALUE, select, ColorLayout{ColorLayout} EdgeHistogram{EdgeHistogram} PHOG{PHOG} AutoColorCorrelogram{AutoColorCorrelogram} CEDDDocument{CEDDDocument} ColorHistogram{ColorHistogram} other{}}",
+            "ColorLayout": "ColorLayout",
+            "EdgeHistogram": "EdgeHistogram",
+            "PHOG": "PHOG",
+            "AutoColorCorrelogram": "AutoColorCorrelogram",
+            "CEDDDocument": "CEDDDocument",
+            "ColorHistogram": "ColorHistogram"
+        }
+    }
+}

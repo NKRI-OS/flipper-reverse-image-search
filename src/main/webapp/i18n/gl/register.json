@@ -1,0 +1,24 @@
+{
+    "register": {
+        "title": "Rexistro",
+        "form": {
+            "button": "Crear a conta"
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Requírese que ingrese un usuario.",
+                    "minlength": "Requírese que o seu usuario teña polo menos 1 carácter.",
+                    "maxlength": "O seu usuario non pode ter mais de 50 carácteres",
+                    "pattern": "O seu usuario só pode conter letras en minúscula e números"
+                }
+            },
+            "success": "<strong>O rexistro da súa conta foi gardado!</strong> Por favor revise o seu correo electrónico para confirmalo.",
+            "error": {
+                "fail": "<strong>O rexistro da súa conta fallou!</strong> Por favor intenteo de novo máis tarde.",
+                "userexists": "<strong>O nome de usuario xa está rexistrado!</strong> Por favor, elixa outro.",
+                "emailexists": "<strong>O correo electrónico xa está en uso!</strong> Por favor, elixa outro."
+            }
+        }
+    }
+}

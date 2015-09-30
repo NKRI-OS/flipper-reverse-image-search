@@ -1,0 +1,62 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 translate="main.title">Welcome to Flipper</h1>
+            <!-- <p class="lead" translate="main.subtitle">This is your homepage</p> -->
+
+            <section class="row margin-top" id="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <img src="assets/images/lirelogo-64.png" alt="Lire" class="img-circle">
+                            <h2>POWERFUL PERFORMANCE</h2>
+                            <p>Using approximate search LIRE scales well to millions of images.</p>
+                        </div>
+                        <div class="clearfix visible-xs-block"></div>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <img src="assets/images/datastaxlogo-64.png" alt="DataStax" class="img-circle">
+                            <h2>SCALABE AND REACTIVE</h2>
+                            <p>Thanks to Apache Cassandra and Solr, flipper is fault tolerant. And It was created as a Reactive Manifesto.</p>
+                        </div>
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <img src="assets/images/apilogo-64.png" alt="API" class="img-circle">
+                            <h2>API</h2>
+                            <p>Flipper brings you an API RESTful. See documentation <a ui-sref="api">here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <h3>View our presentation <a href="/presentation/index.html" target="_self">here</a></h3>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <h3>View lastest searchs <a ui-sref="pictureSearch">here</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div ng-switch="isAuthenticated()">
+                <div class="alert alert-success" ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
+                    You are logged in as user "{{account.login}}".
+                </div>
+
+                <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authenticated">
+                    If you want to <a href="#/login">authenticate</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                </div>
+
+                <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.register">
+                    You don't have an account yet? <a href="#/register">Register a new account</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "generator-jhipster": {
+    "baseName": "flipper",
+    "packageName": "gal.udc.fic.muei.tfm.dap.flipper",
+    "packageFolder": "gal/udc/fic/muei/tfm/dap/flipper",
+    "authenticationType": "xauth",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "cassandra",
+    "devDatabaseType": "cassandra",
+    "prodDatabaseType": "cassandra",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": true,
+    "rememberMeKey": "1ba17bd827c4c22037e2e62562ac5c8f06ddde34",
+    "useSass": false
+  }
+}

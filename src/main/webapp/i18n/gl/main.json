@@ -1,0 +1,19 @@
+{
+    "main": {
+        "title": "Benvido a Flipper!",
+        "subtitle": "Esta é a súa páxina de inicio",
+        "logged": {
+            "message": "Esta conectado como \"{{username}}\"."
+        },
+        "question": "Se ten preguntas sobre JHipster:",
+        "link": {
+            "homepage": "Páxina de inicio de JHipster",
+            "stackoverflow": "JHipster en Stack Overflow",
+            "bugtracker": "JHipster seguemento de erros",
+            "chat": "JHipster public chat room",
+            "contact": "contacto @java_hipster en Twitter"
+        },
+        "like": "Se lle gusta JHipster, denos unha estrela en",
+        "github": "Github"
+    }
+}

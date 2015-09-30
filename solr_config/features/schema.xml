@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+<types>
+<fieldType class="org.apache.solr.schema.TextField" name="TextField">
+<analyzer>
+<tokenizer class="solr.StandardTokenizerFactory"/>
+<filter class="solr.LowerCaseFilterFactory"/>
+</analyzer>
+</fieldType>
+<fieldType class="org.apache.solr.schema.BinaryField" name="BinaryField"/>
+<fieldType class="org.apache.solr.schema.TrieDoubleField" name="TrieDoubleField"/>
+<fieldType class="org.apache.solr.schema.UUIDField" name="UUIDField"/>
+</types>
+<fields>
+<field indexed="true" multiValued="false" name="title" stored="true" type="TextField"/>
+<field indexed="true" multiValued="false" name="featureasbase64" stored="true" type="TextField" termVectors="true" termPositions="true" termOffsets="true"/>
+<field indexed="true" multiValued="false" name="featuresbyte" stored="true" type="BinaryField" termVectors="true" termPositions="true" termOffsets="true"/>
+<field docValues="true" indexed="true" multiValued="true" name="features" stored="true" type="TrieDoubleField" termVectors="true" termPositions="true" termOffsets="true"/>
+<field docValues="true" indexed="true" multiValued="false" name="id" stored="true" type="UUIDField"/>
+<field indexed="true" multiValued="false" name="descriptor" stored="true" type="TextField"/>
+<field indexed="true" multiValued="false" name="stringrepresentation" stored="true" type="TextField" termVectors="true" termPositions="true" termOffsets="true"/>
+<field docValues="true" indexed="true" multiValued="false" name="picture_id" stored="true" type="UUIDField"/>
+<field indexed="true" multiValued="false" name="picturefile" stored="true" type="BinaryField"/>
+</fields>
+<uniqueKey>(picture_id,id)</uniqueKey>
+</schema>

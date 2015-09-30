@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="flipperApp.pictureSearch.detail.title">PictureSearch</span> {{pictureSearch.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureSearch.pictureFile">PictureFile</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:image/*;base64,' + pictureSearch.littlePictureFile}}" style="max-height: 100%;" ng-if="pictureSearch.littlePictureFile"/>
+                    {{byteSize(pictureSearch.pictureFile)}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureSearch.created">Created</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureSearch.created}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.pictureSearch.userLogin">UserLogin</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{pictureSearch.userLogin}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="submit"
+            ui-sref="adminPictureSearch"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

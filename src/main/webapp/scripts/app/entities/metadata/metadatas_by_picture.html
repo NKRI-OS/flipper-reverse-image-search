@@ -1,0 +1,47 @@
+<div>
+    <h2 translate="flipperApp.metadata.home.metadataFromPicture" translate-values="{param: '{{metadatas[0].title}}'}">Metadata from {{metadatas[0].title}}</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img data-ng-src="{{'data:image/*;base64,' + metadatas[0].pictureFile}}" ng-if="metadatas[0].pictureFile"/>
+                {{byteSize(metadatas[0].pictureFile)}}
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="flipperApp.metadata.directory">Directory</th>
+                    <th translate="flipperApp.metadata.type">Tag Type</th>
+                    <th translate="flipperApp.metadata.name">Tag Name</th>
+                    <th translate="flipperApp.metadata.description">Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="metadata in metadatas">
+                    <td>{{metadata.directoryName | characters:10}}</td>
+                    <td>{{metadata.tagType}}</td>
+                    <td>{{metadata.tagName | characters:20}}</td>
+                    <td>{{metadata.description | characters:100}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="metadata.detail({id:metadata.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="metadata"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

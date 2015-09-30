@@ -1,0 +1,79 @@
+
+<div>
+    <h2><span translate="flipperApp.picture.detail.title">Picture</span> {{picture.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.title">Title</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{picture.title}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.description">Description</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{picture.description}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.pictureFile">PictureFile</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:image/*;base64,' + picture.bigPictureFile}}" style="max-height: 100%;" ng-if="picture.bigPictureFile"/>
+                    {{byteSize(picture.bigPictureFile)}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.created">Created</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{picture.created}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.modified">Modified</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{picture.modified}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.owner">Owner</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{picture.onwer}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.picture.modifiedBy">ModifiedBy</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{picture.modifiedBy}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="mypicture"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

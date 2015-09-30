@@ -1,0 +1,77 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "picture_id",
+            "fieldType": "UUID"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "owner",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "littlePictureFile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "pictureSearch_id",
+            "fieldType": "UUID"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "autocolorCorrelogramScore",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "ceddScore",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "colorHistogramScore",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "colorLayoutScore",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "edgeHistogramScore",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "phogScore",
+            "fieldType": "Float"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "mediumPictureFile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "bigPictureFile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "created",
+            "fieldType": "TimeUUID"
+        }
+    ],
+    "changelogDate": "20150829082801",
+    "dto": "mapstruct"
+}

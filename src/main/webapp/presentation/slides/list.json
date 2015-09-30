@@ -1,0 +1,327 @@
+[
+    {
+        "filename": "index.md",
+        "attr": {
+            "data-background": "resources/background.png",
+            "data-background-size": "1024px",
+            "class": "center"
+        }
+    },
+    [
+        {
+            "filename": "introduction.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "introduction/introduction1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "targets/targets1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "state-of-art.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "state-of-art/state-of-art1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "state-of-art/state-of-art2b.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "state-of-art/state-of-art3b.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "methodology.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "methodology/methodology1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "methodology/methodology2.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "methodology/methodology3.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "methodology/methodology4.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "planning/planning1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "planning/planning2.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "analysis.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "analysis/analysis2.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "analysis/analysis3.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "design.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "design/design1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "design/design2.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "design/design3.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "design/design4.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "design/design5.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "design/design6.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "design/design7.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "technology/technology1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "technology/technology2.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "technology/technology3.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "technology/technology4.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none",
+                "class": "multicolumn"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "implementation.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "implementation/implementation1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "implementation/implementation1b.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "solution.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "solution/solution1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none",
+                "class": "center"
+            }
+        }
+    ],
+    [
+        {
+            "filename": "conclusions.md",
+            "attr": {
+                "class": "center"
+            }
+        },
+        {
+            "filename": "conclusions/conclusions1.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        },
+        {
+            "filename": "conclusions/conclusions2.md",
+            "attr": {
+                "data-background": "resources/background.png",
+                "data-background-size": "1024px",
+                "data-transition": "none"
+            }
+        }
+    ],
+    {
+        "filename": "greetings.md",
+        "attr": {
+            "data-background": "resources/questions.png",
+            "class": "center"
+        }
+    },
+    {
+        "filename": "license.md",
+        "attr": {
+            "class": "center"
+        }
+    },
+    {
+        "filename": "print-pdf.md",
+        "attr": {
+            "class": "center"
+        }
+    }
+]

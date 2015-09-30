@@ -1,0 +1,29 @@
+{
+    "flipperApp": {
+        "picture" : {
+            "home": {
+		        "mypictures": "Mis imágenes",
+                "title": "Imágenes",
+                "picturesFromUser": "Imágenes de {{param}}",
+                "createLabel": "Subir nueva imagen",             
+                "editLabel": "Editar imagen"
+            },
+            "created": "Imagen creada con id {{ param }}",
+            "updated": "Imagen actualizada con id {{ param }}",
+            "deleted": "Imagen eliminada con id {{ param }}",
+            "delete": {
+                "question": "¿Seguro que deseas eliminar la imagen con id {{ id }}?"
+            },
+            "detail": {
+                "title": "Imagen"
+            },
+            "title": "nombre",
+            "description": "descripción",
+            "pictureFile": "imagen",
+            "created": "fecha",
+            "modified": "modificada",
+            "owner": "usuario",
+            "modifiedBy": "modificada por"
+        }
+    }
+}

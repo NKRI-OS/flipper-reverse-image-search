@@ -1,0 +1,71 @@
+
+<div>
+    <h2><span translate="flipperApp.metadata.detail.title">Metadata</span> {{metadata.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="flipperApp.metadata.directory">Directory</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{metadata.directoryName}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.metadata.type">Type</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{metadata.tagType}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.metadata.name">Name</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{metadata.tagName}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.metadata.description">Description</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{metadata.description}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.metadata.title">Title</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{metadata.title}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="flipperApp.metadata.pictureFile">PictureFile</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:image/*;base64,' + metadata.pictureFile}}" style="max-height: 100%;" ng-if="metadata.pictureFile"/>
+                    {{byteSize(picture.pictureFile)}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="metadata"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,72 @@
+#
+# Keyspace info
+#
+keyspace: flippertest
+
+#
+# The CQL for creating a keyspace (optional if it already exists)
+#
+keyspace_definition: |
+  CREATE KEYSPACE flippertest WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1 }
+
+#
+# Table info
+#
+table: picture
+
+#
+# The CQL for creating a table you wish to stress (optional if it already exists)
+#
+table_definition: |
+  CREATE TABLE picture (
+      id uuid,
+      title text,
+      description text,
+      pictureFile blob,
+      littlePictureFile blob,
+      mediumPictureFile blob,
+      bigPictureFile blob,
+      created timestamp,
+      modified timestamp,
+      owner text,
+      modifiedBy text,
+      autocolorCorrelogramAsBase64 text,
+      autocolorCorrelogram list<double>,
+      ceddAsBase64 text,
+      cedd list<double>,
+      colorHistogramAsBase64 text,
+      colorHistogram list<double>,
+      colorLayoutAsBase64 text,
+      colorLayout list<double>,
+      edgeHistogramAsBase64 text,
+      edgeHistogram list<double>,
+      phogAsBase64 text,
+      phog list<double>,
+      PRIMARY KEY((id), created)
+  ) WITH CLUSTERING ORDER BY (created DESC)
+    AND compaction = { 'class':'LeveledCompactionStrategy' }
+    AND comment='A table to hold picture'
+
+# Create manually index: CREATE INDEX ON picture (owner);
+
+insert:
+  partitions: uniform(1..50)      # number of unique partitions to update in a single operation
+                                  # if batchcount > 1, multiple batches will be used but all partitions will
+                                  # occur in all batches (unless they finish early); only the row counts will vary
+  batchtype: LOGGED               # type of batch to use
+  select: uniform(1..10)/10       # uniform chance any single generated CQL row will be visited in a partition;
+                                  # generated for each partition independently, each time we visit it
+
+#
+# A list of queries you wish to run against the schema
+#
+queries:
+   singlepicture:
+      cql: SELECT * from picture WHERE id = ? LIMIT 1
+      fields: samerow
+   wherein:
+      cql: SELECT * from picture WHERE id IN (?) LIMIT 100
+      fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
+   owner:
+      cql: SELECT * from picture WHERE owner = ? LIMIT 100
+      fields: samerow

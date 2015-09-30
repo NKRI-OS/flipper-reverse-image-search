@@ -1,0 +1,61 @@
+#
+# Keyspace info
+#
+keyspace: flippertest
+
+#
+# The CQL for creating a keyspace (optional if it already exists)
+#
+keyspace_definition: |
+  CREATE KEYSPACE flippertest WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1': 3};
+
+#
+# Table info
+#
+table: picturefound
+
+#
+# The CQL for creating a table you wish to stress (optional if it already exists)
+#
+table_definition: |
+  CREATE TABLE picturefound (
+      pictureSearch_id uuid,
+      picture_id uuid,
+      title text,
+      owner text,
+      created timestamp,
+      littlePictureFile blob,
+      mediumPictureFile blob,
+      bigPictureFile blob,
+      totalScore float,
+      autocolorCorrelogramScore float,
+      ceddScore float,
+      colorHistogramScore float,
+      colorLayoutScore float,
+      edgeHistogramScore float,
+      phogScore float,
+      PRIMARY KEY((pictureSearch_id), totalscore)
+  ) WITH CLUSTERING ORDER BY (totalscore ASC)
+    AND compaction = { 'class':'LeveledCompactionStrategy' }
+    AND comment='A table to hold found pictures from searchs'
+
+# Create manually index: CREATE INDEX ON picturefound (owner);
+
+insert:
+  partitions: uniform(1..50)       # number of unique partitions to update in a single operation
+                                  # if batchcount > 1, multiple batches will be used but all partitions will
+                                  # occur in all batches (unless they finish early); only the row counts will vary
+  batchtype: LOGGED               # type of batch to use
+  select: uniform(1..10)/10       # uniform chance any single generated CQL row will be visited in a partition;
+                                  # generated for each partition independently, each time we visit it
+
+#
+# A list of queries you wish to run against the schema
+#
+queries:
+   singlepost:
+      cql: SELECT * from picturefound WHERE pictureSearch_id = ? LIMIT 100
+      fields: samerow
+   timeline:
+      cql: select * from picturefound where owner = ? LIMIT 100
+      fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)

@@ -1,0 +1,30 @@
+{
+    "flipperApp": {
+        "picture" : {
+            "home": {
+		        "mypictures": "Miñas imaxes",
+                "title": "Imaxes",
+                "picturesFromUser": "Imaxes de {{param}}",
+                "createLabel": "Crear nova imaxe",
+                "createLabel": "Crear imaxe",
+                "editLabel": "Editar imaxe"
+            },
+            "created": "Nova imaxe creada con id {{ param }}",
+            "updated": "Actualizada imaxe creada con id {{ param }}",
+            "deleted": "Eliminada imaxe creada con id  {{ param }}",
+            "delete": {
+                "question": "Estás seguro que queres eliminar a imaxe con id {{ id }}?"
+            },
+            "detail": {
+                "title": "Imaxe"
+            },
+            "title": "nome",
+            "description": "descripción",
+            "pictureFile": "imaxe",
+            "created": "data",
+            "modified": "modificada",
+            "owner": "usuario",
+            "modifiedBy": "modificada por"
+        }
+    }
+}

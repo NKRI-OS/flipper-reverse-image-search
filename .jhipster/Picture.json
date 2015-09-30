@@ -1,0 +1,49 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "pictureFile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "favourites",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "likes",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "created",
+            "fieldType": "Date"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "modified",
+            "fieldType": "Date"
+        }
+    ],
+    "changelogDate": "20150811075917",
+    "dto": "mapstruct"
+}

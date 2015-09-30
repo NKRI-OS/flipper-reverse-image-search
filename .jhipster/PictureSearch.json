@@ -1,0 +1,60 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "pictureFile",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "maxHits",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "1000"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "featureDescriptor",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "created",
+            "fieldType": "Date"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "pictureIdList",
+            "fieldType": "UUID"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "userId",
+            "fieldType": "UUID"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "userLogin",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "features",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20150821084517",
+    "dto": "mapstruct"
+}

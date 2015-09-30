@@ -1,0 +1,24 @@
+{
+    "flipperApp": {
+        "metadata" : {
+            "home": {
+                "title": "Metadatos de imaxes",
+                "metadataFromPicture": "Metadatos de imaxe '{{param}}'"
+            },
+            "deleted": "Metadatos eliminados con id {{ param }}",
+            "delete": {
+                "question": "Estás seguro que desexas eliminar os metadatos con id {{ id }}?"
+            },
+            "detail": {
+                "title": "Metadatos de imaxe"
+            },
+            "directory": "directorio",
+            "type": "tipo",
+            "name": "nome de tag",
+            "description": "descripción",
+            "picture_id": "id de imaxe",
+            "title": "nome de imaxe",
+            "pictureFile": "imaxe"
+        }
+    }
+}

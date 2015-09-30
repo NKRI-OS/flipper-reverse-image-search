@@ -1,0 +1,5 @@
+default_query_field: description
+#directory_factory_class: Similarity
+auto_soft_commit_max_time: 1000
+generate_docvalues_for_fields: '*'
+enable_string_copy_fields: false

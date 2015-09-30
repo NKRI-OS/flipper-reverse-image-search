@@ -1,0 +1,32 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header" translate="flipperApp.picture.home.picturesFromUser" translate-values="{param: '{{user}}'}">Pictures from {{user}}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container top25">
+        <div class="row" infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+            <div ng-repeat="picture in pictures">
+                <div ng-if="$index % 4 == 0" class="clearfix"></div>
+                <div class="col-xs-4 col-sm-3 col-md-3 portfolio-item">
+                    <a ui-sref="picture.detail({id:picture.id})">
+                        <img data-ng-src="{{'data:image/*;base64,' + picture.littlePictureFile}}"
+                         alt="{{picture.title}}" class="img-thumbnail" ng-if="picture.littlePictureFile"/>
+                    </a>
+                    <h3><a ui-sref="picture.detail({id:picture.id})">{{picture.title | characters:20}}</a></h3>
+                    <p>{{picture.created}}</p>
+                    <p>{{picture.description | characters:100}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

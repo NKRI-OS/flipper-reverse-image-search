@@ -1,0 +1,37 @@
+{
+    "flipperApp": {
+        "pictureFound" : {
+            "home": {
+                "title": "Resultados de imagen",
+		"picturesFoundFromPictureSearch": "Imágenes encontradas de {{param}}",
+                "createLabel": "Crear nueva imagen encontrada",
+                "createOrEditLabel": "Editar imagen encontrada"
+            },
+            "created": "Imagen encontrada con id {{ param }}",
+            "updated": "Imagen encontrada actualizada con id {{ param }}",
+            "deleted": "Imagen encontrada eliminada {{ param }}",
+            "delete": {
+                "question": "¿Seguro que deseas eliminar la imagen encontrada con id {{ id }}?"
+            },
+            "detail": {
+                "title": "Imagen encontrad"
+            },
+            "picture_id": "Id de imagen",
+            "title": "nombre de imagen",
+            "owner": "usuario",
+            "littlePictureFile": "Imagen pequeña",
+	    "pictureFile": "imagen",
+            "pictureSearch_id": "Id de imagen de búsqueda",
+	    "totalScore": "puntuación total",
+            "autocolorCorrelogramScore": "Autocolor Correlogram puntuación",
+            "ceddScore": "Cedd puntuación",
+            "colorHistogramScore": "Color Histogram puntuación",
+            "colorLayoutScore": "Color Layout puntuación",
+            "edgeHistogramScore": "Edge Histogram puntuación",
+            "phogScore": "PHOG puntuación",
+            "mediumPictureFile": "Imagen mediana",
+            "bigPictureFile": "Imagen grande",
+            "created": "fecha"
+        }
+    }
+}
