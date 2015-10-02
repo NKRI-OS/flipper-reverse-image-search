@@ -3,29 +3,29 @@ README for flipper
 
 "Scalable platform to storage, publishing and advanced search of pictures"
 
-Final project from ME in Computing. MUEI, Facultade de Informática, Universidade da Coruña.
+Final project from ME in Computing, [MUEI](http://www.fic.udc.es/muei), [Facultade de Informática](http://www.fic.udc.es), [Universidade da Coruña](http://www.udc.gal). The [thesis](https://forxa.mancomun.org/docman/view.php/379/376/tfm.pdf), other documentation and source code can be obtain from [A Forxa Mancomun](https://forxa.mancomun.org/projects/flipper/). You can view the presentation slides [here](http://dalbelap.github.io/revealjs-muei-tfm/).
 
-Install
+Installation
 -------
 
-Cassandra DataStax 2.1: http://docs.datastax.com/en/cassandra/2.1/cassandra/install/install_cassandraTOC.html
+Apache Cassandra 2.1 installation from [Planet Cassandra](http://www.planetcassandra.org/cassandra/?dlink=http://www.datastax.com/documentation/cassandra/2.1/cassandra/install/installDeb_t.html) or DataStax documentation web site http://docs.datastax.com/en/cassandra/2.1/cassandra/install/install_cassandraTOC.html
 
-Insall version 2.7
-
-$ sudo apt-get install dsc21=2.1.7-1 cassandra=2.1.7
+Install version 2.1.9
+```
+$ sudo apt-get install dsc21=2.1.9-1 cassandra=2.1.9
 $ sudo service cassandra stop
 $ sudo rm -rf /var/lib/cassandra/data/system/*
 $ sudo service cassandra start
+```
 
-
-Config
+*Keyspace* and tables
 ------
 
-Create data keyspace and tables
+- Create the keyspace and tables
 
 ```
 $ cqlsh -f src/main/resources/config/cql/create-keyspace.cql
-$ cqlsh -k flipper -f src/main/resources/config/cql/create-tables.cql 
+$ cqlsh -k flipper -f src/main/resources/config/cql/create-tables.cql
 $ cqlsh -k flipper -f src/main/resources/config/cql/entity_Picture.cql
 $ cqlsh -k flipper -f src/main/resources/config/cql/entity_Metadata.cql
 $ cqlsh -k flipper -f src/main/resources/config/cql/entity_PictureSearch.cql
@@ -36,80 +36,22 @@ $ cqlsh -k flipper -f src/main/resources/config/cql/user_counter.cql
 
 ```
 
-For production mode create this keyspace
+- Production mode create the keyspace using the following cql file:
 ```
 $ cqlsh -f src/main/resources/config/cql/create-keyspace-prod.cql
-```
-
-Maven
------
-
-Problems with datastax-core 2.1.7.1 in guava and netty dependencies.
-To resolve, use the las pom.xml from master JHipster on github or update lasted version of JHipster:
-```xml
-       <datastax-driver.version>2.1.7.1</datastax-driver.version>
-
-        <!--
-        <dependency>
-            <groupId>org.apache.cassandra</groupId>
-            <artifactId>cassandra-all</artifactId>
-            <version>${cassandra.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        -->
-
-        <dependency>
-            <groupId>org.cassandraunit</groupId>
-            <artifactId>cassandra-unit-spring</artifactId>
-            <version>2.1.3.1</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-cassandra</artifactId>
-        </dependency>
-        <!-- DataStax driver -->
-        <dependency>
-            <groupId>com.datastax.cassandra</groupId>
-            <artifactId>cassandra-driver-core</artifactId>
-            <version>${datastax-driver.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.codahale.metrics</groupId>
-                    <artifactId>metrics-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.datastax.cassandra</groupId>
-            <artifactId>cassandra-driver-mapping</artifactId>
-            <version>${datastax-driver.version}</version>
-        </dependency>
-        <!-- Spring Cloud -->
 ```
 
 Solr Configuration
 ------------------
 
-For search metadatas and text data it is used a Solr node with DataStax Enterprise Search. It requires to install DataStax Enterprise Searh using an account and a repository.
+To search text data from Cassandra (metadata from pictures) it is used a Solr node with [DataStax Enterprise Search](http://www.datastax.com/products/datastax-enterprise-search). It requires an account from DataStax
 
-- Install DSE
-[Sign up](https://academy.datastax.com/downloads?destination=downloads\&dxt=DX) an account to download DSE packets. For a Debian based GNU/Linux installation follow bellow instructions:
+- Installing DSE Search
+[Sign up](https://academy.datastax.com/downloads?destination=downloads\&dxt=DX) an account to download DSE Search packets. You can install DSE Search from different methods like GUI or Text mode, using a repository from your GNU/Linux distribution or in a Cloud service, [here](http://docs.datastax.com/en/datastax_enterprise/4.7/datastax_enterprise/install/installTOC.html) is the official documentation from DataStax. To install DSE as a service using APT repositories on Debian-based systems follow the bellow command lines:
+
 ```
-# Repositorio de DataStax, acceso con usuario y password del registro en la web
-$ echo "deb http://username:password@debian.datastax.com/enterprise stable main" | sudo tee -a /etc/apt/sources.list.d/datastax.sources.list
+# repository from DataStax
+$ echo "deb http://yourusername:yourpassword@debian.datastax.com/enterprise stable main" | sudo tee -a /etc/apt/sources.list.d/datastax.sources.list
 
 # public key
 $ curl -L https://debian.datastax.com/debian/repo_key | sudo apt-key add -
@@ -121,23 +63,28 @@ $ sudo apt-get install dse-full opscenter (Also installs OpsCenter.)
 ```
 
 - Configure DataStax Enterprise Search
+
 ```
+# after install stop the service
 $ sudo service cassandra stop
 $ sudo rm -rf /var/lib/cassandra/data/system/*
 
-# Edit Cassandra DSE as Solr mode
+# enable Cassandra DSE as Solr mode
 $ sudo vim /etc/default/dse
         SOLR_ENABLED=1
 
-# Start services
+# start services
 $ sudo service dse start
 $ sudo service datastax-agent start
 $ sudo nodetool status
 ```
 
-- Index tables 
+- Index Cassandra tables
+After the DSE Search installation, it is required to index the tables from Cassandra that you can store in Solr node. This repository includes a pre-configuration and a shell script to index Flipper tables in Solr using the *dsetool* from DSE. When a table is indexed in Solr, DSE creates a *solr_query* column in the tables for search in Solr using CQL (Cassandra Query Language) queries:
+
 ```
 $ cd solr_config
+# view the content from YAML files
 $ for i in `ls config*.yaml`; do echo "## $i"; cat $i; done
 
 ## config-metadata.yaml
@@ -181,10 +128,8 @@ To search and paging with Solr (*solr_query*) must be disabled default PAGING in
     /* enabled LZ4 compressión */
     private String compression = ProtocolOptions.Compression.LZ4.name();
 
-```
+    ...
 
-and 
-```java
     /**
      * Queries default fetch size.
      */
@@ -192,6 +137,38 @@ and
     private int fetchSize = Integer.MAX_VALUE;
 ```
 
+YAML Configuration
+------------------
+
+- Rememberme key: change the remember key value:
+```
+$ echo jhipster.security.rememberme.key: `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 | sha256sum | cut -d' ' -f 1`
+```
+
+- Authentication: change the XAuth secret key:
+```
+$ vim src/main/resources/config/application.yml
+authentication:
+    xauth:
+        secret: myXAuthSecret
+        # Token is valid 30 minutes
+        tokenValidityInSeconds: 1800
+```
+
+- Email configuration: pre-configured for a [Mailgun](https://mailgun.com) service:
+
+```
+$ vim src/main/resources/config/application.yml
+mail:
+    host: smtp.mailgun.org
+    port: 465
+    username: postmaster@yourdomain-from-mailgun-servie.mailgun.org
+    password: yourpassword-from-your-mailgun-service
+    protocol: smtps
+    tls: true
+    auth: true
+    from: no-reply@localhost
+```
 
 Run
 ---
@@ -217,20 +194,18 @@ $ java -jar ./target/flipper-0.0.1-SNAPSHOT.war --spring.profiles.active=prod
 
 It can run in "production mode" if you trigger the "prod" profile (there are several ways to trigger a Spring profile, for example you can add -Dspring.profiles.active=prod to your JAVA_OPTS when running your server).
 
-*./target/flipper-0.0.1-SNAPSHOT.war* file is an executable WAR file (see next section to run it). It can also be deployed on an application server, but as it includes the Tomcat runtime libs, you will probably get some warnings. Use *target/flipper-0.0.1-SNAPSHOT.war.original* for your application server. 
+*./target/flipper-0.0.1-SNAPSHOT.war* file is an executable WAR file (see next section to run it). It can also be deployed on an application server, but as it includes the Tomcat runtime libs, you will probably get some warnings. Use *target/flipper-0.0.1-SNAPSHOT.war.original* for your application server.
 
 Read more info about production package in JHipster page, in [production section](http://jhipster.github.io/production.html)
 
 Thanks
 ------
-
-- to Óscar Pedreira Fernández for their help and advice in carrying out this work.
-- to Mathias Lux and Oge Marques for the library [Lire](http://www.lire-project.net/).
-- to all Apache Lucene and Solr developers.
-- to all Cassandra developers.
-- to [Julien Dubois](https://github.com/jdubois) and all [JHipster](https://github.com/jhipster/generator-jhipster) Yeoman generator developers and for their issues resolved.
-- to DataStax
-- to all developers and software engineers who write and share knowledge.
+- Óscar Pedreira Fernández for their help and advice in carrying out.
+- Apache Lucene and Solr developers.
+- Mathias Lux and Oge Marques and other developers  for share the library [Lire](http://www.lire-project.net/).
+- Cassandra developers, Planet Cassandra and DataStax.
+- [Julien Dubois](https://github.com/jdubois) and all [JHipster](https://github.com/jhipster/generator-jhipster) Yeoman generator developers for issues resolved.
+- Developers and software engineers for write and share knowledge.
 
 License
 -------
