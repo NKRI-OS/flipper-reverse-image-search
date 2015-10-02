@@ -21,6 +21,7 @@ security.basic.enabled: false
 endpoints.jolokia.enabled: false
 
 # security configuration (this key should be unique for your application, and kept secret)
+### CHANGE THIS VALUE IN PRODUCTION MODE!
 jhipster.security.rememberme.key: 1ba17bd827c4c22037e2e62562ac5c8f06ddde34
 
 async:
@@ -28,16 +29,18 @@ async:
     maxPoolSize: 50
     queueCapacity: 10000
 
+### CHANGE THIS VALUE IN PRODUCTION MODE!
 mail:
     host: smtp.mailgun.org
     port: 465
-    username: postmaster@sandboxf75a7806f0724870a3fca626558f667b.mailgun.org
-    password: 9807a32a37124f83432a64d5c277e18f
+    username: postmaster@yourdomain-from-mailgun-servie.mailgun.org
+    password: yourpassword-from-your-mailgun-service
     protocol: smtps
     tls: true
     auth: true
     from: no-reply@localhost
 
+### CHANGE THIS VALUE IN PRODUCTION MODE!
 authentication:
     xauth:
         secret: myXAuthSecret
@@ -53,7 +56,7 @@ swagger:
     title: flipper API
     description: flipper applications and beyond!
     version: 0.0.1
-    termsOfServiceUrl: http://jhipster.github.io/
+    termsOfServiceUrl: https://github.com/dalbelap/flipper-reverse-image-search
     contact:
-    license: Apache 2.0
-    licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+    license: GNU GPL v3
+    licenseUrl: http://www.gnu.org/licenses/gpl-3.0.en.html
