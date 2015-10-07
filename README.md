@@ -1,4 +1,4 @@
-README for flipper
+Flipper Open Reverse Image Search
 ==================
 
 "Scalable platform to storage, publishing and advanced search of pictures"
