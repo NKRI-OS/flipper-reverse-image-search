@@ -83,10 +83,10 @@ public class MetadataRepository {
      * @param pageable
      * @return
      */
-    public Page<Metadata> findAllOrdered(Pageable pageable) {
+    public Page<Metadata> findAllOrdered(UUID startId, Pageable pageable) {
 
-        String query = String.format("{\"q\":\"*:*\", \"start\": %d, \"sort\":\"id DESC\"}", pageable.getOffset());
-        List<Metadata> metadatas = metadataAccessor.findAllOrdered(query, pageable.getPageSize()).all();
+        // Adds a position
+        List<Metadata> metadatas = metadataAccessor.findAllOrdered(startId, pageable.getPageSize()).all();
         long total = generalCounterAccessor.getMetadataCounter(Calendar.getInstance().get(Calendar.YEAR)).one().getLong("metadata_counter");
 
         return new PageImpl<>(metadatas, pageable, total);
@@ -166,7 +166,6 @@ public class MetadataRepository {
         List<Metadata> updates = metadataAccessor.findByPicture_id(picture_id).all();
         List<UUID> uuidList = updates.stream().map(Metadata::getId).collect(Collectors.toList());
 
-        // TODO Improve with BATCH
         for(UUID id: uuidList) {
             metadataAccessor.updateByPicture_id(id, picture_id, title);
         }

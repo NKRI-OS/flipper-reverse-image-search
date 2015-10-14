@@ -64,7 +64,6 @@ public class CassandraProperties {
      * Compression supported by the Cassandra binary protocol: can be NONE, SNAPPY, LZ4.
      */
     //private String compression = ProtocolOptions.Compression.NONE.name();
-
     /* enabled LZ4 compressión */
     private String compression = ProtocolOptions.Compression.LZ4.name();
 
@@ -86,10 +85,7 @@ public class CassandraProperties {
     /**
      * Queries default fetch size.
      */
-    //private int fetchSize = QueryOptions.DEFAULT_FETCH_SIZE;
-    /* disabled PAGING to use Solr with DataStax Search */
-    private int fetchSize = Integer.MAX_VALUE;
-
+    private int fetchSize = QueryOptions.DEFAULT_FETCH_SIZE;
 
     /**
      * Class name of the reconnection policy.

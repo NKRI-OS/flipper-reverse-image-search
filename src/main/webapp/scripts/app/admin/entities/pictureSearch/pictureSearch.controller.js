@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('flipperApp')
-    .controller('AdminPictureSearchController', function ($scope, AdminPictureSearch, ParseLinks) {
+    .controller('AdminPictureSearchController', function ($scope, AdminPictureSearch) {
         $scope.pictureSearchs = [];
         $scope.page = 0;
 
         $scope.loadAll = function() {
-            AdminPictureSearch.query({page: $scope.page, size: 20}, function(result, headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
+            AdminPictureSearch.query({}, function(result) {
                $scope.pictureSearchs = result;
             });
         };

@@ -23,7 +23,7 @@
     </div>
 
     <div class="container top25">
-        <div class="row" infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+        <div class="row">
             <div ng-repeat="picture in pictures">
                 <div ng-if="$index % 4 == 0" class="clearfix"></div>
                 <div class="col-xs-4 col-sm-3 col-md-3 portfolio-item">

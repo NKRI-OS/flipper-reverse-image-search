@@ -30,20 +30,19 @@ public interface PictureAccessor {
     @Query("SELECT * FROM picture WHERE id = :id")
     Picture findOne(@Param("id") UUID id);
 
-    @Query("SELECT * FROM picture " +
-        "WHERE solr_query = :query LIMIT :total")
-    Result<Picture> findAllOrdered(@Param("query") String query, @Param("total") int total);
-
     @Query("SELECT * FROM picture LIMIT 100")
     Result<Picture> findAll();
 
     @Query("SELECT * FROM picture WHERE owner = :owner LIMIT 100")
     Result<Picture> findByOwner(@Param("owner") String owner);
 
-    @Query("SELECT count(*) FROM picture WHERE owner = :owner LIMIT 10000")
-    Result<Picture> countByOwner(@Param("owner") String owner);
+    @Query("SELECT * FROM picture WHERE token(id) > token(:start) LIMIT :total")
+    Result<Picture> findAllOrdered(@Param("start") UUID start, @Param("total") long total);
 
-    @Query("SELECT * FROM picture WHERE solr_query = :query LIMIT 100")
+    @Query("SELECT * FROM picture WHERE owner = :owner AND token(id) > token(:start) LIMIT :total")
+    Result<Picture> findByOwnerOrdered(@Param("owner") String owner, @Param("start") UUID start, @Param("total") long total);
+
+    @Query("SELECT * FROM picture WHERE title=:query LIMIT 100")
     Result<Picture> search(@Param("query") String query);
 
     @Query("SELECT count(*) FROM picture LIMIT 10000")

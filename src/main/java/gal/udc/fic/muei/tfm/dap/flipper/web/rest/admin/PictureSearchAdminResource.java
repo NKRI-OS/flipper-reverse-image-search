@@ -8,21 +8,18 @@ import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureSearchDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureSearchListDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.mapper.PictureSearchMapper;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.HeaderUtil;
-import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import java.net.URISyntaxException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -68,20 +65,15 @@ public class PictureSearchAdminResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public ResponseEntity<List<PictureSearchListDTO>> getAll(Pageable pageable) {
+    public ResponseEntity<List<PictureSearchListDTO>> getAll() {
         log.debug("REST request to get all PictureSearchs");
-        try {
-            Page<PictureSearch> page = pictureSearchRepository.findAllOrdered(pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/admin/pictureSearchs");
-            return new ResponseEntity<>(page.getContent().stream()
-                .map(pictureSearchMapper::pictureSearchToPictureSearchListDTO)
-                .collect(Collectors.toCollection(LinkedList::new)), headers, HttpStatus.OK);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest()
-                .header("Failure", e.getMessage())
-                .body(null);
-        }
+
+        List<PictureSearch> pictures = pictureSearchRepository.findAll();
+
+        List<PictureSearchListDTO> pictureListDTOs = pictures.stream()
+            .map(pictureSearchMapper::pictureSearchToPictureSearchListDTO)
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(pictureListDTOs, HttpStatus.OK);
     }
 
     /**

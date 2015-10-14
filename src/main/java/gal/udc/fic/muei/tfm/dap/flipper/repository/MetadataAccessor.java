@@ -30,11 +30,11 @@ public interface MetadataAccessor {
     @Query("SELECT * FROM metadata WHERE id = :id")
     Metadata findOne(@Param("id") UUID id);
 
-    @Query("SELECT * FROM metadata WHERE solr_query = :query LIMIT :total")
-    Result<Metadata> findAllOrdered(@Param("query") String query, @Param("total") int total);
-
-    @Query("SELECT * FROM metadata")
+    @Query("SELECT * FROM metadata LIMIT 100")
     Result<Metadata> findAll();
+
+    @Query("SELECT * FROM metadata WHERE token(picture_id) > token(:start) LIMIT :total")
+    Result<Metadata> findAllOrdered(@Param("start") UUID start, @Param("total") long total);
 
     @Query("SELECT * FROM metadata WHERE picture_id = :picture_id LIMIT 100")
     Result<Metadata> findByPicture_id(@Param("picture_id") UUID picture_id);
@@ -45,9 +45,6 @@ public interface MetadataAccessor {
     @Query("DELETE FROM metadata WHERE picture_id = :picture_id")
     void deleteByPicture_id(@Param("picture_id") UUID picture_id);
 
-    @Query("SELECT * FROM metadata WHERE solr_query = :query LIMIT 100")
+    @Query("SELECT * FROM metadata WHERE description=:query LIMIT 100")
     Result<Metadata> search(@Param("query") String query);
-
-    @Query("SELECT count(*) FROM metadata LIMIT 10000")
-    Result<Metadata> count();
 }

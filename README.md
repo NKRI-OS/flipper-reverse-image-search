@@ -5,6 +5,13 @@ Flipper Open Reverse Image Search
 
 Final project from ME in Computing, [MUEI](http://www.fic.udc.es/muei), [Facultade de Informática](http://www.fic.udc.es), [Universidade da Coruña](http://www.udc.gal). The [thesis](https://forxa.mancomun.org/docman/view.php/379/376/tfm.pdf), other documentation and source code can be obtain from [A Forxa Mancomun](https://forxa.mancomun.org/projects/flipper/). You can view the presentation slides [here](http://dalbelap.github.io/revealjs-muei-tfm/).
 
+Required
+--------
+- Java JDK 8
+- Cassandra 2.1
+- Maven 3.2
+- DataStax Search (optional)
+
 Installation
 -------
 
@@ -41,10 +48,10 @@ $ cqlsh -k flipper -f src/main/resources/config/cql/user_counter.cql
 $ cqlsh -f src/main/resources/config/cql/create-keyspace-prod.cql
 ```
 
-Solr Configuration
+Solr Configuration (Optional)
 ------------------
 
-To search text data from Cassandra (metadata from pictures) it is used a Solr node with [DataStax Enterprise Search](http://www.datastax.com/products/datastax-enterprise-search). It requires an account from DataStax
+To search text data from Cassandra (metadata from pictures) it is used a Solr node with [DataStax Enterprise Search](http://www.datastax.com/products/datastax-enterprise-search). It requires an account from DataStax. This is an optional feature, use branck datastax_search for use it.
 
 - Installing DSE Search
 [Sign up](https://academy.datastax.com/downloads?destination=downloads\&dxt=DX) an account to download DSE Search packets. You can install DSE Search from different methods like GUI or Text mode, using a repository from your GNU/Linux distribution or in a Cloud service, [here](http://docs.datastax.com/en/datastax_enterprise/4.7/datastax_enterprise/install/installTOC.html) is the official documentation from DataStax. To install DSE as a service using APT repositories on Debian-based systems follow the bellow command lines:

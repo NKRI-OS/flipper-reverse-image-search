@@ -5,20 +5,17 @@ import gal.udc.fic.muei.tfm.dap.flipper.domain.PictureFound;
 import gal.udc.fic.muei.tfm.dap.flipper.repository.PictureFoundRepository;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureFoundDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.mapper.PictureFoundMapper;
-import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import java.net.URISyntaxException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -78,21 +75,16 @@ public class PictureFoundResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<PictureFoundDTO>> getByPictureSearch(@PathVariable String pictureSearch_id, Pageable pageable) {
+    public ResponseEntity<List<PictureFoundDTO>> getByPictureSearch(@PathVariable String pictureSearch_id) {
         log.debug("REST request to get PictureFound from picture search with id : {}", pictureSearch_id);
 
-        try {
-            Page<PictureFound> page = pictureFoundRepository.findByPictureSearch_idOrdered(UUID.fromString(pictureSearch_id), pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pictureFounds/byPictureSearch/" + pictureSearch_id);
-            return new ResponseEntity<>(page.getContent().stream()
-                .map(pictureFoundMapper::pictureFoundToPictureFoundDTO)
-                .collect(Collectors.toCollection(LinkedList::new)), headers, HttpStatus.OK);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest()
-                .header("Failure", e.getMessage())
-                .body(null);
-        }
+        List<PictureFound> pictureFounds = pictureFoundRepository.findByPictureSearch_id(UUID.fromString(pictureSearch_id));
+
+        List<PictureFoundDTO> pictureFoundDTO = pictureFounds.stream()
+            .map(pictureFoundMapper::pictureFoundToPictureFoundDTO)
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(pictureFoundDTO, HttpStatus.OK);
+
     }
 
 

@@ -5,20 +5,18 @@ import gal.udc.fic.muei.tfm.dap.flipper.domain.Metadata;
 import gal.udc.fic.muei.tfm.dap.flipper.repository.MetadataRepository;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.MetadataDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.mapper.MetadataMapper;
-import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -63,20 +61,15 @@ public class MetadataResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public ResponseEntity<List<MetadataDTO>> getAll(Pageable pageable) {
+    public ResponseEntity<List<MetadataDTO>> getAll() {
         log.debug("REST request to get all Metadatas");
-        try {
-            Page<Metadata> page = metadataRepository.findAllOrdered(pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/metadatas");
-            return new ResponseEntity<>(page.getContent().stream()
-                .map(metadataMapper::metadataToMetadataDTO)
-                .collect(Collectors.toCollection(LinkedList::new)), headers, HttpStatus.OK);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest()
-                .header("Failure", e.getMessage())
-                .body(null);
-        }
+
+        List<Metadata> metadatas = metadataRepository.findAll();
+
+        List<MetadataDTO> metadataDTOs = metadatas.stream()
+            .map(metadataMapper::metadataToMetadataDTO)
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(metadataDTOs, HttpStatus.OK);
     }
 
     /**
@@ -128,13 +121,6 @@ public class MetadataResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Metadata> search(@PathVariable String query) {
-
-        /* convert to lower case */
-        if(query.isEmpty()){
-            query = "*";
-        }else {
-            query = query.toLowerCase();
-        }
 
         return metadataRepository.search(query);
     }

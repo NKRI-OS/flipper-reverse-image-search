@@ -85,13 +85,9 @@ public class PictureRepository {
      * @param pageable
      * @return
      */
-    public Page<Picture> findByOwnerOrdered(String owner, Pageable pageable) {
+    public Page<Picture> findByOwnerOrdered(String owner, UUID startId, Pageable pageable) {
 
-        String query = String.format("{\"q\":\"owner:%s\", " +
-                "\"start\": %d, " +
-                "\"sort\":\"created DESC\"}",
-            owner, pageable.getOffset());
-        List<Picture> pictures = pictureAccesor.findAllOrdered(query, pageable.getPageSize()).all();
+        List<Picture> pictures = pictureAccesor.findByOwnerOrdered(owner, startId, pageable.getPageSize()).all();
 
         // Get total from owner
         long total = 0;
@@ -118,10 +114,9 @@ public class PictureRepository {
      * @param pageable
      * @return
      */
-    public Page<Picture> findAllOrdered(Pageable pageable) {
+    public Page<Picture> findAllOrdered(UUID startId, Pageable pageable) {
 
-        String query = String.format("{\"q\":\"*:*\", \"start\": %d, \"sort\":\"created DESC\"}", pageable.getOffset());
-        List<Picture> pictures = pictureAccesor.findAllOrdered(query, pageable.getPageSize()).all();
+        List<Picture> pictures = pictureAccesor.findAllOrdered(startId, pageable.getPageSize()).all();
 
         long total = generalCounterAccessor.getPictureCounter(Calendar.getInstance().get(Calendar.YEAR)).one().getLong("picture_counter");
 

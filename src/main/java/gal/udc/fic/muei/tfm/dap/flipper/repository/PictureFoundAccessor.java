@@ -33,14 +33,8 @@ public interface PictureFoundAccessor {
     @Query("SELECT * FROM pictureFound LIMIT 100")
     Result<PictureFound> findAll();
 
-    @Query("SELECT * FROM pictureFound WHERE solr_query = :query LIMIT :total")
-    Result<PictureFound> findByPictureSearchOrdered(String query, int total);
-
     @Query("SELECT * FROM pictureFound WHERE pictureSearch_id = :pictureSearch_id LIMIT 100")
     Result<PictureFound> findByPictureSearch(@Param("pictureSearch_id") UUID pictureSearch_id);
-
-    @Query("SELECT * FROM pictureFound WHERE solr_query = :query LIMIT 100")
-    Result<PictureFound> search(@Param("query") String query);
 
     @Query("DELETE FROM pictureFound WHERE pictureSearch_id = :pictureSearch_id")
     void deleteByPictureSearch(@Param("pictureSearch_id") UUID pictureSearch_id);

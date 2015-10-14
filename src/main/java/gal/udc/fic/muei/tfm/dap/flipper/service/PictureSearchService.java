@@ -45,7 +45,7 @@ import java.util.stream.Collectors;
 @Service
 public class PictureSearchService {
 
-    private static final int MAX_RESULTS = 1000;
+    private static final int MAX_RESULTS = 100;
     private static final int LIMIT_PER_WRITE = 50;
     private static final int MAX_WRITES = 20;
     private static final int CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR);

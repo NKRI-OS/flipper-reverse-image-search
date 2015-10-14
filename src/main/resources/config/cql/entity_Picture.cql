@@ -26,3 +26,4 @@ CREATE TABLE IF NOT EXISTS picture (
     PRIMARY KEY(id)
 );
 CREATE INDEX ON picture ( owner );
+CREATE INDEX ON picture ( title );

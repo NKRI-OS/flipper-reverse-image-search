@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('flipperApp')
-    .controller('AdminMetadataController', function ($scope, AdminMetadata, MetadataSearchQuery, ParseLinks) {
+    .controller('AdminMetadataController', function ($scope, AdminMetadata, MetadataSearchQuery) {
         $scope.metadatas = [];
         $scope.page = 0;
 
         $scope.loadAll = function() {
-            AdminMetadata.query({page: $scope.page, size: 20}, function(result, headers) {
-               $scope.links = ParseLinks.parse(headers('link'));
+            AdminMetadata.query({}, function(result) {
                $scope.metadatas = result;
             });
         };

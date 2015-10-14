@@ -8,21 +8,22 @@ import gal.udc.fic.muei.tfm.dap.flipper.repository.UserRepository;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureListDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.mapper.PictureMapper;
-import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import java.net.URISyntaxException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -66,20 +67,16 @@ public class PictureResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public ResponseEntity<List<PictureListDTO>> getAll(Pageable pageable) {
+    public ResponseEntity<List<PictureListDTO>> getAll() {
         log.debug("REST request to get all Pictures");
-        try {
-            Page<Picture> page = pictureRepository.findAllOrdered(pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pictures");
-            return new ResponseEntity<>(page.getContent().stream()
-                .map(pictureMapper::pictureToPictureListDTO)
-                .collect(Collectors.toCollection(LinkedList::new)), headers, HttpStatus.OK);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest()
-                .header("Failure", e.getMessage())
-                .body(null);
-        }
+
+        List<Picture> pictures = pictureRepository.findAll();
+
+        List<PictureListDTO> pictureListDTOs = pictures.stream()
+            .map(pictureMapper::pictureToPictureListDTO)
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(pictureListDTOs, HttpStatus.OK);
+
     }
 
     /**
@@ -107,24 +104,18 @@ public class PictureResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public ResponseEntity<List<PictureListDTO>> getAllFromOwner(@PathVariable String owner, Pageable pageable) {
+    public ResponseEntity<List<PictureListDTO>> getAllFromOwner(@PathVariable String owner) {
         log.debug("REST request to get all Pictures");
         Optional<User> user = userRepository.findOneByLogin(owner);
         if(user.isPresent())
         {
-            try {
-                /* get pictures from user */
-                Page<Picture> page = pictureRepository.findByOwnerOrdered(owner, pageable);
-                HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/pictures/byUser/" + owner);
-                return new ResponseEntity<>(page.getContent().stream()
-                    .map(pictureMapper::pictureToPictureListDTO)
-                    .collect(Collectors.toCollection(LinkedList::new)), headers, HttpStatus.OK);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-                return ResponseEntity.badRequest()
-                    .header("Failure", e.getMessage())
-                    .body(null);
-            }
+            List<Picture> pictures = pictureRepository.findByOwner(owner);
+
+            List<PictureListDTO> pictureListDTOs = pictures.stream()
+                .map(pictureMapper::pictureToPictureListDTO)
+                .collect(Collectors.toList());
+            return new ResponseEntity<>(pictureListDTOs, HttpStatus.OK);
+
         }
 
         // if user not found
@@ -165,13 +156,6 @@ public class PictureResource {
     @Transactional(readOnly = true)
     public List<PictureListDTO> search(@PathVariable String query) {
         List<PictureListDTO> result = new ArrayList<>();
-
-        /* convert to lower case */
-        if(query.isEmpty()){
-            query = "*";
-        }else {
-            query = query.toLowerCase();
-        }
 
         result.addAll(pictureRepository.search(query).stream()
             .map(pictureMapper::pictureToPictureListDTO)

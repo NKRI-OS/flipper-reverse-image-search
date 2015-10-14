@@ -1,17 +1,14 @@
 'use strict';
 
 angular.module('flipperApp')
-    .controller('PictureController', function ($scope, Picture, PictureSearchQuery, ParseLinks) {
+    .controller('PictureController', function ($scope, Picture, PictureSearchQuery) {
         $scope.pictures = [];
         $scope.page = 0;
         $scope.loadAll = function() {
             /** Infinity Scroll */
 
-            Picture.query({page: $scope.page, size: 20}, function(result, headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
-                for (var i = 0; i < result.length; i++) {
-                    $scope.pictures.push(result[i]);
-                }
+            Picture.query({}, function(result) {
+                $scope.pictures = result;
             });
 
             /*

@@ -106,24 +106,6 @@ public class PictureFoundRepository {
         return pictureFoundAccessor.findByPictureSearch(pictureSearch_id).all();
     }
 
-
-    /**
-     * Find all pictures found ordered and pageable
-     * @param uuid
-     * @param pageable
-     * @return
-     */
-    public Page<PictureFound> findByPictureSearch_idOrdered(UUID uuid, Pageable pageable) {
-
-        // Ordered by total score
-        String query = String.format("{\"q\":\"picturesearch_id:"+uuid.toString()+"\", \"start\": %d, \"sort\":\"totalscore asc\"}", pageable.getOffset());
-        List<PictureFound> picturesFound = pictureFoundAccessor.findByPictureSearchOrdered(query, pageable.getPageSize()).all();
-
-        long total = pictureSearchCounterAccessor.getPictureCounter(uuid).one().getLong("picturefound_counter");
-
-        return new PageImpl<>(picturesFound, pageable, total);
-    }
-
     public PictureFound save(PictureFound pictureFound) {
         mapper.save(pictureFound);
         return pictureFound;

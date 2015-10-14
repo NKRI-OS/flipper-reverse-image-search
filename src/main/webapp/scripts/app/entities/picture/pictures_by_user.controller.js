@@ -1,18 +1,15 @@
 'use strict';
 
 angular.module('flipperApp')
-    .controller('PictureByUserController', function ($scope, $rootScope, $stateParams, entity, PictureByUser, ParseLinks) {
+    .controller('PictureByUserController', function ($scope, $rootScope, $stateParams, entity, PictureByUser) {
         $scope.pictures = [];
         $scope.page = 0;
         $scope.user = $stateParams.owner;
 
         $scope.loadAll = function(owner) {
             /** Infinity Scroll */
-            PictureByUser.query({owner: owner, page: $scope.page, size: 20}, function(result, headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
-                for (var i = 0; i < result.length; i++) {
-                    $scope.pictures.push(result[i]);
-                }
+            PictureByUser.query({owner: owner}, function(result) {
+                $scope.pictures = result;
             });
         };
 

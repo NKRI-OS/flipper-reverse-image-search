@@ -4,7 +4,6 @@ import com.datastax.driver.mapping.Result;
 import com.datastax.driver.mapping.annotations.Accessor;
 import com.datastax.driver.mapping.annotations.Param;
 import com.datastax.driver.mapping.annotations.Query;
-import gal.udc.fic.muei.tfm.dap.flipper.domain.Picture;
 import gal.udc.fic.muei.tfm.dap.flipper.domain.PictureSearch;
 
 import java.util.UUID;
@@ -31,9 +30,8 @@ public interface PictureSearchAccesor {
     @Query("SELECT * FROM pictureSearch WHERE id = :id")
     PictureSearch findOne(@Param("id") UUID id);
 
-    @Query("SELECT * FROM pictureSearch WHERE solr_query = :query LIMIT :total")
-    Result<PictureSearch> findAllOrdered(@Param("query") String query, @Param("total") int total);
-
+    @Query("SELECT * FROM pictureSearch WHERE token(id) > token(:start) LIMIT :total")
+    Result<PictureSearch> findAllOrdered(@Param("start") UUID start, @Param("total") int total);
 
     @Query("SELECT * FROM pictureSearch LIMIT 100")
     Result<PictureSearch> findAll();

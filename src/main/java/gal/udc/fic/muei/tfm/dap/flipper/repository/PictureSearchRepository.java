@@ -84,10 +84,9 @@ public class PictureSearchRepository {
      * @param pageable
      * @return
      */
-    public Page<PictureSearch> findAllOrdered(Pageable pageable) {
+    public Page<PictureSearch> findAllOrdered(UUID startId, Pageable pageable) {
 
-        String query = String.format("{\"q\":\"*:*\", \"start\": %d, \"sort\":\"created DESC\"}", pageable.getOffset());
-        List<PictureSearch> picturesSearch = pictureSearchAccesor.findAllOrdered(query, pageable.getPageSize()).all();
+        List<PictureSearch> picturesSearch = pictureSearchAccesor.findAllOrdered(startId, pageable.getPageSize()).all();
 
         long total = generalCounterAccessor.getPictureSearchCounter(Calendar.getInstance().get(Calendar.YEAR)).one().getLong("picturesearch_counter");
 

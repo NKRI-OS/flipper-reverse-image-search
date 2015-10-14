@@ -12,12 +12,8 @@ import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureListDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.dto.PictureUpdateDTO;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.mapper.PictureMapper;
 import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.HeaderUtil;
-import gal.udc.fic.muei.tfm.dap.flipper.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +27,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -180,23 +175,15 @@ public class MyPictureResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public ResponseEntity<List<PictureListDTO>> getAll(Pageable pageable) {
+    public ResponseEntity<List<PictureListDTO>> getAll() {
         log.debug("REST request to get all Pictures");
 
-        try {
-            Page<Picture> page = pictureRepository.findByOwnerOrdered(SecurityUtils.getCurrentLogin(), pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/mypictures");
+        List<Picture> pictures = pictureRepository.findByOwner(SecurityUtils.getCurrentLogin());
 
-            return new ResponseEntity<>(page.getContent().stream()
-                .map(pictureMapper::pictureToPictureListDTO)
-                .collect(Collectors.toCollection(LinkedList::new)), headers, HttpStatus.OK);
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest()
-                .header("Failure", e.getMessage())
-                .body(null);
-        }
+        List<PictureListDTO> pictureListDTOs = pictures.stream()
+            .map(pictureMapper::pictureToPictureListDTO)
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(pictureListDTOs, HttpStatus.OK);
     }
 
     /**
