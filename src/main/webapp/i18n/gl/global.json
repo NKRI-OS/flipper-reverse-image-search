@@ -57,6 +57,11 @@
                     "authenticated": "Se desexa <a class=\"alert-link\" href=\"#/login\">iniciar unha sesión</a>, pode intentalo coas contas predeterminadas:<br/>- Administrator (usuario=\"admin\" e contrasinal=\"admin\") <br/>- Usuario (usuario=\"user\" e contrasinal=\"user\").",
                     "register": "Aínda non tes unha conta de usuario? <a class=\"alert-link\" href=\"#/register\">Crea unha conta</a>"
                 },
+                "cookiepolicy":{
+                    "title": "Política de cookies",
+                    "use": "Usamos cookies para facilitar o uso da nosa web. As cookies son pequenos arquivos de texto que o navegador almacena no disco duro do seu ordenador e que son necesarias para usar o noso sitio web. Nós as usamos para almacenar as sesión do usuario, mellorar e comprender o xeito no que a nosa web é utilizado e, deste xeito a mellorar de forma consistente o proceso de navegación.",
+                    "description": "As cookies son o punto de referencia que nos di, por exemplo, se unha páxina da nosa web foi visto antes, ou se a súa visita é novo ou recorrente. As cookies que usamos non almacenan os datos persoais ou calquera información que poidan identificar. Se non quere recibir cookies, configure o seu navegador de Internet para borralos do disco duro do seu ordenador, o bloque ou aviso-lo en caso de instalación do mesmo."
+                },
                 "error": {
                     "dontmatch" : "O contrasinal e a confirmación non coinciden!"
                 },

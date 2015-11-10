@@ -64,9 +64,17 @@
         <script src="bower_components/json3/lib/json3.js"></script>
         <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
         <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script src="bower_components/cookieconsent2/cookieconsent.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
+    <script>
+        var pagecookiepolicy = "#cookiepolicy";
+        var message = "This website uses cookies to ensure you get the best experience on our website";
+        var gotit = "Got it!";
+        window.cookieconsent_options = {"message": message,
+        "dismiss": gotit, "learnMore":"More info", "link":pagecookiepolicy, "theme":"light-floating"};
+    </script>
 
     <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
     <script src="scripts/app/app.js"></script>
