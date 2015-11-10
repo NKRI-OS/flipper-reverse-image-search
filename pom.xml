@@ -27,7 +27,7 @@ along with Flipper Open Reverse Image Search.  If not, see <http://www.gnu.org/l
 
     <groupId>gal.udc.fic.muei.tfm.dap.flipper</groupId>
     <artifactId>flipper</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>flipper</name>
